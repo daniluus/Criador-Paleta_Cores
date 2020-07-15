@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Criador de Paleta de Cores</title>
+
+	<style>
+		#app {
+
+		}
+		p {
+			top: -30px;
+			font-size: 20px;
+		}
+		#botao {
+			padding: 20px;
+			font-size: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		
+		<p>Clique no botão para adicionar quadrados</p>
+		<p>Após clique em cada quadrado para mudar de cor. </p>
+		<button id="botao">Clique-me</button>
+
+
+	</div>
+
+	<script>
+		let btnElement = document.querySelector('#botao')
+
+		let divElement = document.querySelector('#app')
+
+		function getRandomColor(){
+			var letters = "0123456789ABCDEF"
+			var color = "#";
+
+			for(let i = 0; i < 6; i++){
+				color += letters[Math.floor(Math.random() * 16)];
+			}
+
+			return color;
+		}
+
+		var newColor = getRandomColor();
+
+		btnElement.onclick = function(){
+			let boxElement = document.createElement('div');
+			
+
+			var paragElement = document.createElement('p')
+
+
+			boxElement.style.width = "100px";
+			boxElement.style.height = "100px";
+			boxElement.style.backgroundColor = "red";
+			boxElement.style.margin = "15px";
+			
+
+			boxElement.onmousedown = function(){
+				boxElement.style.backgroundColor = getRandomColor();
+
+				
+				var paragText = document.createTextNode(getRandomColor())
+
+
+				paragElement.appendChild(paragText)
+
+			}
+
+			divElement.appendChild(boxElement)
+			divElement.appendChild(paragElement)
+		}
+
+	</script>
+
+
+</body>
+</html>
